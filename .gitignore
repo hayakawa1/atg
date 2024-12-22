@@ -48,3 +48,5 @@ ssl/
 
 # Google OAuth
 client_secrets.json .env
+.env
+.env.production
