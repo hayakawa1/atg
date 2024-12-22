@@ -50,3 +50,5 @@ ssl/
 client_secrets.json .env
 .env
 .env.production
+.env
+.env.production
