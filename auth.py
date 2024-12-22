@@ -12,12 +12,15 @@ import json
 # 環境変数の読み込み
 load_dotenv()
 
+# 環境変数からベースURLを取得
+BASE_URL = os.getenv('BASE_URL', 'http://localhost:3000')
+REDIRECT_URI = f'{BASE_URL}/auth/callback'
+
 auth = Blueprint('auth', __name__)
 
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
 GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
-REDIRECT_URI = "https://localhost:3000/auth/google/callback"
 
 # スコープを修正
 SCOPES = [
