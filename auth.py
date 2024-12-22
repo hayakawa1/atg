@@ -14,7 +14,7 @@ load_dotenv()
 
 # 環境変数からベースURLを取得
 BASE_URL = os.getenv('BASE_URL', 'http://localhost:3000')
-REDIRECT_URI = f'{BASE_URL}/auth/google/callback'
+REDIRECT_URI = f'{BASE_URL}/auth/callback'
 
 auth = Blueprint('auth', __name__)
 
@@ -55,7 +55,7 @@ def login():
     session['state'] = state
     return redirect(authorization_url)
 
-@auth.route('/google/callback')
+@auth.route('/callback')
 def callback():
     flow = Flow.from_client_config(
         {
