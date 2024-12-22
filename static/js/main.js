@@ -480,10 +480,10 @@ async function fetchReplies(postId, originalContent) {
             </a>
         `;
         
-        // リプライを表示
+        // リプ��イを表示
         postsContainer.innerHTML = '';
         if (data.replies.length === 0) {
-            postsContainer.innerHTML = '<p style="padding: 1rem;">まだリプライはありま���ん。</p>';
+            postsContainer.innerHTML = '<p style="padding: 1rem;">まだリプライはありません。</p>';
         } else {
             data.replies.forEach(reply => {
                 const replyElement = createPostElement(reply);
