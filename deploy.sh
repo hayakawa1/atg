@@ -10,7 +10,7 @@ cd /var/www/atg
 
 # 現在のプロセスを停止
 echo "Stopping current application..."
-pkill -f "python3 app.py" || true
+pkill -f "gunicorn" || true
 
 # Gitから最新のコードを取得
 echo "Pulling latest code from Git..."
@@ -43,9 +43,9 @@ if [ ! -d "instance" ]; then
     chmod 777 instance
 fi
 
-# アプリケーションを起動
-echo "Starting application..."
-nohup python3 app.py > flask.log 2>&1 &
+# Gunicornでアプリケーションを起動
+echo "Starting application with Gunicorn..."
+nohup gunicorn --bind 0.0.0.0:3001 --workers 3 --timeout 120 app:app > flask.log 2>&1 &
 
 # Nginxの設定をテスト
 echo "Testing Nginx configuration..."
