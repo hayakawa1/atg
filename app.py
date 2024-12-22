@@ -47,5 +47,4 @@ with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':
-    ssl_context = ('ssl/cert.pem', 'ssl/key.pem')
-    app.run(host='localhost', port=3000, ssl_context=ssl_context, debug=True) 
+    app.run(host='0.0.0.0', port=3001, debug=True) 
