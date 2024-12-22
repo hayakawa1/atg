@@ -1,0 +1,433 @@
+/* ベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #15202B;
+    color: #FFFFFF;
+}
+
+/* アプリケーションコンテナ */
+.app-container {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    min-height: 100vh;
+}
+
+/* サイドバー共通 */
+.sidebar, .right-sidebar {
+    background-color: #192734;
+    padding: 1rem;
+}
+
+/* 左サイドバー */
+.sidebar {
+    border-right: 1px solid #38444D;
+}
+
+.logo {
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.logo h1 {
+    color: #1DA1F2;
+    font-size: 1.5rem;
+}
+
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+.nav-item.active {
+    font-weight: bold;
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.nav-item:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+}
+
+/* ユーザーセクション */
+.user-section {
+    margin-top: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #1DA1F2;
+    color: white;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #1A91DA;
+}
+
+/* メインコンテンツ */
+.main-content {
+    padding: 1rem;
+    border-right: 1px solid #38444D;
+}
+
+/* 右サイドバー */
+.right-sidebar {
+    padding: 1rem;
+}
+
+.hashtags-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.hashtags-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+    .app-container {
+        grid-template-columns: 80px 1fr 250px;
+    }
+
+    .nav-item span, 
+    .user-section span {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar, .right-sidebar {
+        display: none;
+    }
+}
+
+/* メインコンテンツのヘッダー */
+.content-header {
+    padding: 1rem;
+    border-bottom: 1px solid #38444D;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #8899A6;
+    font-size: 0.9rem;
+}
+
+.new-post-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #1DA1F2;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.new-post-btn:hover {
+    background-color: #1A91DA;
+}
+
+/* 投稿リスト */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    padding: 1rem;
+    border-bottom: 1px solid #38444D;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.post:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.post-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.post-time {
+    color: #8899A6;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    margin-bottom: 0.75rem;
+}
+
+.content-text {
+    color: #FFFFFF;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    color: #1DA1F2;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.post-footer {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    color: #8899A6;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.action-btn:hover {
+    color: #1DA1F2;
+}
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #192734;
+    margin: 10vh auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid #38444D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #8899A6;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #8899A6;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #253341;
+    border: 1px solid #38444D;
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #1DA1F2;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #1A91DA;
+}
+
+/* ハッシュタグリスト */
+.hashtag-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+.hashtag-item:hover {
+    background-color: #273340;
+}
+
+.hashtag-count {
+    color: #8899A6;
+    font-size: 0.9rem;
+}
+
+.like-btn.active {
+    color: #E0245E;
+}
+
+.like-btn.active i {
+    color: #E0245E;
+}
+
+.like-btn:hover {
+    color: #E0245E;
+}
+
+/* 削除確認モーダル用のスタイル */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cancel-btn {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid #38444D;
+    color: #FFFFFF;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.delete-confirm-btn {
+    padding: 0.5rem 1rem;
+    background-color: #E0245E;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.warning-text {
+    color: #E0245E;
+    margin-top: 0.5rem;
+}
+
+/* 削除ボタンのスタイル */
+.delete-btn {
+    color: #E0245E;
+}
+
+.delete-btn:hover {
+    color: #E0245E;
+    opacity: 0.8;
+}
+
+/* リンクやボタンのホバー時は投稿全体のホバー効果を無効化 */
+.post a:hover,
+.post button:hover {
+    cursor: pointer;
+    z-index: 1;
+}

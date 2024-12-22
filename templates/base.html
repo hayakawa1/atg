@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Talk Gallery</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 左サイドバー -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>ATG</h1>
+            </div>
+            <div class="nav-items">
+                <a href="{{ url_for('index') }}" class="nav-item active" id="home-nav">
+                    <i class="material-icons">home</i>
+                    <span>ホーム</span>
+                </a>
+                {% if current_user.is_authenticated %}
+                <a href="#" class="nav-item" id="favorites-nav">
+                    <i class="material-icons">favorite_border</i>
+                    <span>お気に入り</span>
+                </a>
+                <a href="#" class="nav-item" id="profile-nav">
+                    <i class="material-icons">person</i>
+                    <span>プロフィール</span>
+                </a>
+                {% endif %}
+            </div>
+            <div class="user-section">
+                {% if current_user.is_authenticated %}
+                    <img src="{{ current_user.profile_pic }}" alt="{{ current_user.name }}" class="avatar">
+                    <span class="username">{{ current_user.name }}</span>
+                    <a href="{{ url_for('auth.logout') }}" class="logout-btn">
+                        <i class="material-icons">logout</i>
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('auth.login') }}" class="login-btn">
+                        <i class="material-icons">login</i>
+                        <span>ログイン</span>
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- 右サイドバー -->
+        <aside class="right-sidebar">
+            <div class="hashtags-section">
+                <h2>ハッシュタグ</h2>
+                <div class="hashtags-list">
+                    <!-- ハッシュタグは動的に追加されます -->
+                </div>
+            </div>
+        </aside>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

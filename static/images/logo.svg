@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { fill: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .main { font-size: 24px; font-weight: bold; }
+        .sub { font-size: 12px; }
+    </style>
+    <text x="10" y="28" class="text main">ATG</text>
+    <text x="70" y="18" class="text sub">AI Talk</text>
+    <text x="70" y="32" class="text sub">Gallery</text>
+</svg> 

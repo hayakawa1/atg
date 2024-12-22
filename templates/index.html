@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-header">
+    <h1>AI Talk Gallery</h1>
+    <p class="subtitle">ChatGPTとの面白い会話集</p>
+    {% if current_user.is_authenticated %}
+    <button class="new-post-btn" onclick="showNewPostModal()">
+        <i class="material-icons">add</i>
+        <span>新規投稿</span>
+    </button>
+    {% endif %}
+</div>
+
+<div id="posts" class="posts-list">
+    <!-- 投稿がここに動的に追加されます -->
+</div>
+
+<!-- 投稿テンプレート -->
+<template id="post-template">
+    <article class="post">
+        <div class="post-header">
+            <div class="post-user">
+                <img class="avatar" src="" alt="">
+                <div class="user-info">
+                    <span class="username"></span>
+                    <span class="post-time"></span>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="action-btn delete-btn" title="削除">
+                    <i class="material-icons">delete</i>
+                </button>
+            </div>
+        </div>
+        <div class="post-content">
+            <a class="content-text" target="_blank"></a>
+            <div class="post-tags"></div>
+        </div>
+        <div class="post-footer">
+            <button class="action-btn reply-btn" title="返信">
+                <i class="material-icons">chat_bubble_outline</i>
+                <span class="reply-count">0</span>
+            </button>
+            <button class="action-btn like-btn" title="お気に入り">
+                <i class="material-icons">favorite_border</i>
+                <span class="like-count">0</span>
+            </button>
+        </div>
+    </article>
+</template>
+
+<!-- 新規投稿モーダル -->
+<div id="newPostModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>新規投稿</h2>
+            <button class="close-btn" onclick="closeNewPostModal()">
+                <i class="material-icons">close</i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="newPostForm">
+                <input type="hidden" id="reply_to_id" name="reply_to_id">
+                <div class="form-group">
+                    <label for="url">ChatGPTの会話URL</label>
+                    <input type="url" id="url" name="url" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">コメント</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tags">タグ（カンマ区切り）</label>
+                    <input type="text" id="tags" name="tags" placeholder="例: 面白い,感動,学び">
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="material-icons">send</i>
+                    <span>投稿する</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 
