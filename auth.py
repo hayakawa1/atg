@@ -57,6 +57,12 @@ def login():
 
 @auth.route('/callback')
 def callback():
+    # HTTPS経由でのリクエストURLを構築
+    scheme = 'https'
+    host = request.headers.get('X-Forwarded-Host', request.host)
+    path = request.full_path
+    authorization_response = f'{scheme}://{host}{path}'
+    
     flow = Flow.from_client_config(
         {
             "web": {
@@ -67,12 +73,12 @@ def callback():
                 "redirect_uris": [REDIRECT_URI]
             }
         },
-        scopes=SCOPES,  # 修正したスコープを使用
+        scopes=SCOPES,
         redirect_uri=REDIRECT_URI
     )
     
     flow.fetch_token(
-        authorization_response=request.url,
+        authorization_response=authorization_response,
         state=session['state']
     )
     
