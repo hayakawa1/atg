@@ -57,11 +57,18 @@ def login():
 
 @auth.route('/callback')
 def callback():
+    # デバッグログを追加
+    current_app.logger.debug(f"Request URL: {request.url}")
+    current_app.logger.debug(f"Headers: {request.headers}")
+    current_app.logger.debug(f"REDIRECT_URI: {REDIRECT_URI}")
+    
     # HTTPS経由でのリクエストURLを構築
     scheme = 'https'
     host = request.headers.get('X-Forwarded-Host', request.host)
     path = request.full_path
     authorization_response = f'{scheme}://{host}{path}'
+    
+    current_app.logger.debug(f"Authorization Response: {authorization_response}")
     
     flow = Flow.from_client_config(
         {
