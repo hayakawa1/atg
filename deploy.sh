@@ -1,5 +1,3 @@
-cd ~/atg
-cat > deploy.sh << 'EOF'
 #!/bin/bash
 
 # エラーが発生したら停止
@@ -58,4 +56,3 @@ echo "Restarting Nginx..."
 sudo systemctl restart nginx
 
 echo "Deployment completed successfully!"
-EOF
