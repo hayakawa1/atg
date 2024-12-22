@@ -9,6 +9,9 @@ import logging
 # 環境変数の読み込み
 load_dotenv()
 
+# 追加：開発環境でのOAuth2 HTTPSチェックを無効化
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///instance/database.db')
