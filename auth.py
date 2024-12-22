@@ -31,6 +31,9 @@ SCOPES = [
 
 @auth.route('/login')
 def login():
+    # セッションをクリア
+    session.clear()
+    
     # デバッグ用のログ出力
     current_app.logger.debug(f"GOOGLE_CLIENT_ID: {GOOGLE_CLIENT_ID}")
     current_app.logger.debug(f"GOOGLE_CLIENT_SECRET: {GOOGLE_CLIENT_SECRET}")
