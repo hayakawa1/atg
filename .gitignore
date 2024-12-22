@@ -47,4 +47,4 @@ ssl/
 *.log
 
 # Google OAuth
-client_secrets.json 
+client_secrets.json .env
