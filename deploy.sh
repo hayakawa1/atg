@@ -45,7 +45,7 @@ fi
 
 # Gunicornでアプリケーションを起動
 echo "Starting application with Gunicorn..."
-nohup gunicorn --bind 0.0.0.0:3001 --workers 3 --timeout 120 app:app > flask.log 2>&1 &
+cd /var/www/atg && PYTHONPATH=/var/www/atg nohup gunicorn --bind 0.0.0.0:3001 --workers 3 --timeout 120 'app:app' > flask.log 2>&1 &
 disown
 
 # Nginxの設定をテスト
