@@ -55,7 +55,7 @@ def login():
     session['state'] = state
     return redirect(authorization_url)
 
-@auth.route('/google/callback')
+@auth.route('/callback')
 def callback():
     flow = Flow.from_client_config(
         {
